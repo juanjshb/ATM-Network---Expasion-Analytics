@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PowerBI_Template = Open ATM_Network_Expansion.pbip in Power BI Desktop, refresh the PostgreSQL data source, then save as PBIX.
+
+annotation PBI_QueryOrder = ["v_atm_locations_powerbi","v_scrape_runs_powerbi","PostgreSQLServer","PostgreSQLDatabase"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table v_atm_locations_powerbi
+ref table v_scrape_runs_powerbi
+ref table TransactionTrend
+ref table CompetitorMatrix
+ref table DateTableTemplate_809eeef5-4b06-4ac9-96e8-abf88a39c814
+ref table LocalDateTable_ee1fd506-b7b8-4b2b-b754-6eda632586fc
+ref table LocalDateTable_f9cf4f59-9fea-450e-af7f-f7697d869a06
+ref table LocalDateTable_b81e736d-ad27-406b-8f6e-d5add17dcd44
+ref table LocalDateTable_a5003c52-6edf-44e3-9b4d-e84502821f4d
+

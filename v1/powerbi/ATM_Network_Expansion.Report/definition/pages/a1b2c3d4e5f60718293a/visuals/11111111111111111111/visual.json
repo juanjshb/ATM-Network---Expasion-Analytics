@@ -1,0 +1,91 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "11111111111111111111",
+  "position": {
+    "x": 219.9883632457593,
+    "y": 85.551030151128614,
+    "z": 0,
+    "height": 90.439660445478822,
+    "width": 250.54230258544811,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "Total ATMs"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.Total ATMs",
+              "nativeQueryRef": "Total ATMs",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'TOTAL ATMS'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "100D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "31204c67a65070ec450b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "Total ATMs"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

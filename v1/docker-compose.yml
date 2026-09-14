@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: atm-network-v1-postgres
+    environment:
+      POSTGRES_DB: atm_network_v1
+      POSTGRES_USER: atm
+      POSTGRES_PASSWORD: atm_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_v1_data:/var/lib/postgresql/data
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: atm-network-v1-mssql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_v1_data:/var/opt/mssql
+
+volumes:
+  postgres_v1_data:
+  mssql_v1_data:
+

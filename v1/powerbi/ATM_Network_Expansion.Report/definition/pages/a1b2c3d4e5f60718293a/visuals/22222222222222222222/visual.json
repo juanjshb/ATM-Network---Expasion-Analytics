@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "22222222222222222222",
+  "position": {
+    "x": 480.3079264199078,
+    "y": 85.551030151128614,
+    "z": 1000,
+    "height": 90.439660445478822,
+    "width": 251.76446015903565,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "Network Coverage"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.Network Coverage",
+              "nativeQueryRef": "Network Coverage",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'NETWORK COVERAGE'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

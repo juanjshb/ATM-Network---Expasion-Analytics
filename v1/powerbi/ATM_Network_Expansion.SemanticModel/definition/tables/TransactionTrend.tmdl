@@ -1,0 +1,22 @@
+table TransactionTrend
+	lineageTag: 068cda0f-4499-4522-932d-82258fdbd726
+
+	column Month
+		lineageTag: d8565ebf-c04d-4000-80b3-5ded0c105a3f
+		isNameInferred
+		sourceColumn: [Month]
+
+	column MonthNo
+		lineageTag: 1b56f537-e766-4fea-96ce-dfec67ec6f25
+		isNameInferred
+		sourceColumn: [MonthNo]
+
+	column Volume
+		lineageTag: 7d598b84-273e-4db9-9dc4-d1e5a0ba7ac7
+		isNameInferred
+		sourceColumn: [Volume]
+
+	partition TransactionTrend = calculated
+		mode: import
+		source = DATATABLE("Month", STRING, "MonthNo", INTEGER, "Volume", DOUBLE, {{"Jan",1,2500000},{"Feb",2,3200000},{"Mar",3,2800000},{"Apr",4,3400000},{"May",5,4200000},{"Jun",6,3500000},{"Jul",7,3900000},{"Aug",8,4500000},{"Sep",9,5200000},{"Oct",10,4300000},{"Nov",11,5600000},{"Dec",12,6900000}})
+

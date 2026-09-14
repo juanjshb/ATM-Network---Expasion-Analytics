@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ATM Network Expansion"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "90cc1c65-2be1-4739-9bb5-253fa3a60b30"
+  }
+}

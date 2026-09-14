@@ -1,0 +1,204 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "77777777777777777777",
+  "position": {
+    "x": 960,
+    "y": 356,
+    "z": 6000,
+    "height": 205,
+    "width": 285,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompetitorMatrix"
+                    }
+                  },
+                  "Property": "Metric"
+                }
+              },
+              "queryRef": "CompetitorMatrix.Metric",
+              "nativeQueryRef": "Metric",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompetitorMatrix"
+                    }
+                  },
+                  "Property": "Scotiabank"
+                }
+              },
+              "queryRef": "CompetitorMatrix.Scotiabank",
+              "nativeQueryRef": "Scotiabank",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompetitorMatrix"
+                    }
+                  },
+                  "Property": "Banreservas"
+                }
+              },
+              "queryRef": "CompetitorMatrix.Banreservas",
+              "nativeQueryRef": "Banreservas",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompetitorMatrix"
+                    }
+                  },
+                  "Property": "Popular"
+                }
+              },
+              "queryRef": "CompetitorMatrix.Popular",
+              "nativeQueryRef": "Popular",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CompetitorMatrix"
+                    }
+                  },
+                  "Property": "BHD"
+                }
+              },
+              "queryRef": "CompetitorMatrix.BHD",
+              "nativeQueryRef": "BHD",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CompetitorMatrix"
+                  }
+                },
+                "Property": "Metric"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'COMPETITOR COMPARISON MATRIX'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d78d2900ada7b8976ed8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CompetitorMatrix"
+              }
+            },
+            "Property": "Metric"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "86fa5b300acbd60eb0d4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CompetitorMatrix"
+              }
+            },
+            "Property": "Scotiabank"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2ead0b7dae076b53c8ae",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CompetitorMatrix"
+              }
+            },
+            "Property": "Banreservas"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0b8389763350d8230249",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CompetitorMatrix"
+              }
+            },
+            "Property": "Popular"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6492998f3a8c0b803575",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CompetitorMatrix"
+              }
+            },
+            "Property": "BHD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

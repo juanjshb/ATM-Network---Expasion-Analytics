@@ -1,0 +1,206 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "55555555555555555555",
+  "position": {
+    "x": 220,
+    "y": 176,
+    "z": 4000,
+    "height": 385,
+    "width": 725,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Latitude": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "latitude"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.latitude",
+              "nativeQueryRef": "latitude",
+              "active": true
+            }
+          ]
+        },
+        "Legend": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.region",
+              "nativeQueryRef": "region",
+              "active": true
+            }
+          ]
+        },
+        "Longitude": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "longitude"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.longitude",
+              "nativeQueryRef": "longitude",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "Total ATMs"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.Total ATMs",
+              "nativeQueryRef": "Total ATMs",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "longitude"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.longitude",
+              "nativeQueryRef": "longitude"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "latitude"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.latitude",
+              "nativeQueryRef": "latitude"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MAP OF DOMINICAN REPUBLIC'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b03db3bd4b5d7a66e991",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "latitude"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1faaec21c6d29a4024a8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "longitude"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5b1e896d01dd640aa7e3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "240091fc02eb83db7da9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "Total ATMs"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

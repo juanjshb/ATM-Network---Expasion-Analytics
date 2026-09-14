@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "66666666666666666666",
+  "position": {
+    "x": 960,
+    "y": 176,
+    "z": 5000,
+    "height": 165,
+    "width": 285,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "province"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.province",
+              "nativeQueryRef": "province",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "Total ATMs"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.Total ATMs",
+              "nativeQueryRef": "Total ATMs",
+              "active": true
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "v_atm_locations_powerbi"
+                  }
+                },
+                "Property": "Total ATMs"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ATM DENSITY BY REGION'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d3ebc87bb19a44ed3198",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "Total ATMs"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "506b98999b21bab82c45",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "province"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

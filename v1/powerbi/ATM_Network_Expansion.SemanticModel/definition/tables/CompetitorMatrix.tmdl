@@ -1,0 +1,32 @@
+table CompetitorMatrix
+	lineageTag: 41ba78cb-4902-42fa-a79f-5ce4fdedb7cf
+
+	column Metric
+		lineageTag: ddadf725-7a64-4d46-b492-45a49005df19
+		isNameInferred
+		sourceColumn: [Metric]
+
+	column Scotiabank
+		lineageTag: 168001c0-b74c-49f1-a1f6-5ac0239a310c
+		isNameInferred
+		sourceColumn: [Scotiabank]
+
+	column Banreservas
+		lineageTag: 620fbfd8-42db-4a0f-bc2b-e56e120179d1
+		isNameInferred
+		sourceColumn: [Banreservas]
+
+	column Popular
+		lineageTag: b1491494-530d-4963-9849-e900c65fec58
+		isNameInferred
+		sourceColumn: [Popular]
+
+	column BHD
+		lineageTag: c6220558-1d4a-42b8-a995-12ff34915629
+		isNameInferred
+		sourceColumn: [BHD]
+
+	partition CompetitorMatrix = calculated
+		mode: import
+		source = DATATABLE("Metric", STRING, "Scotiabank", DOUBLE, "Banreservas", DOUBLE, "Popular", DOUBLE, "BHD", DOUBLE, {{"ATMs",0.84,0.62,0.51,0.34},{"Coverage",0.72,0.55,0.39,0.31},{"Trans. Vol",0.45,0.42,0.23,0.15},{"Market Share",0.39,0.33,0.28,0.19},{"Avg. Util.",0.69,0.58,0.49,0.41}})
+

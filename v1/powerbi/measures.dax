@@ -1,0 +1,32 @@
+Total ATMs =
+COUNTROWS('v_atm_locations_powerbi')
+
+Provinces Covered =
+DISTINCTCOUNT('v_atm_locations_powerbi'[province])
+
+Regions Covered =
+DISTINCTCOUNT('v_atm_locations_powerbi'[region])
+
+Last Refresh =
+MAX('v_atm_locations_powerbi'[last_seen_at])
+
+Operational ATMs =
+CALCULATE(
+    [Total ATMs],
+    'v_atm_locations_powerbi'[business_status] = "OPERATIONAL"
+)
+
+Network Coverage =
+DIVIDE(
+    [Operational ATMs],
+    [Total ATMs]
+)
+
+Latest Scrape Results =
+MAX('v_scrape_runs_powerbi'[result_count])
+
+Total Transactions =
+14200000
+
+Average Utilization =
+0.685

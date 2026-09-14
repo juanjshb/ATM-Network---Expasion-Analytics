@@ -1,0 +1,190 @@
+table v_atm_locations_powerbi
+	lineageTag: 43bd2103-51e9-4b42-95c1-791c5032a53f
+
+	measure 'Total ATMs' = COUNTROWS('v_atm_locations_powerbi')
+		formatString: #,0
+		lineageTag: db0b5ff3-3b46-4748-ac8a-3135d58c35e7
+
+	measure 'Operational ATMs' = CALCULATE([Total ATMs], 'v_atm_locations_powerbi'[business_status] = "OPERATIONAL")
+		lineageTag: 7b48b941-06c0-477b-9029-1b2fa7ebfba7
+
+		formatStringDefinition = ""
+
+	measure 'Network Coverage' = DIVIDE([Operational ATMs], [Total ATMs])
+		formatString: 0.0%
+		lineageTag: b9b07330-bcc5-4715-a3ac-580961f453b9
+
+	measure 'Provinces Covered' = DISTINCTCOUNT('v_atm_locations_powerbi'[province])
+		formatString: #,0
+		lineageTag: 6e38a2dd-89c4-4cef-9853-c607f8a1509e
+
+	measure 'Regions Covered' = DISTINCTCOUNT('v_atm_locations_powerbi'[region])
+		formatString: #,0
+		lineageTag: 679bc588-6abb-4d35-b091-59c4266dc420
+
+	measure 'Latest Refresh' = MAX('v_atm_locations_powerbi'[last_seen_at])
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: bebadb62-5b36-4096-a416-5b8c4330458b
+
+	measure 'Total Transactions' = 14200000
+		formatString: #,0,,.0M
+		lineageTag: e57aa723-3fe4-4507-ae45-d63b2a7cc945
+
+	measure 'Average Utilization' = 0.685
+		formatString: 0.0%
+		lineageTag: 3cb81c1f-9d74-4af2-98fa-46b8b77f8ec6
+
+	column id
+		dataType: int64
+		lineageTag: de68acd5-8d25-4beb-bbb0-2d2328707f21
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column google_place_id
+		dataType: string
+		lineageTag: 64a63648-3ae0-4206-b81e-4c793933653d
+		summarizeBy: none
+		sourceColumn: google_place_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column bank
+		dataType: string
+		lineageTag: 936b9c41-f373-4075-bfa7-569a79ef2f8f
+		summarizeBy: none
+		sourceColumn: bank
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: b977ebec-4fb5-448f-ba44-48ffefcda464
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column address
+		dataType: string
+		lineageTag: 6be6da05-c7bc-4fa6-a5fb-ecf6ae58b7e5
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column province
+		dataType: string
+		lineageTag: 7e01cd4e-f29a-4f0e-b26f-e96e0cbb4f29
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: bd33a19e-8e36-48f9-a673-4bb2f3ba46bd
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 90930080-8355-47bc-80f1-03933ab80947
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		lineageTag: 3e3b60c1-3a1a-4062-8cc7-f8b7faa0260e
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column longitude
+		dataType: double
+		lineageTag: 9ac1f8cc-1953-4a35-b0b9-81b0c2652180
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_status
+		dataType: string
+		lineageTag: cc671830-ebaa-498e-ad85-6f10cc5c67d4
+		summarizeBy: none
+		sourceColumn: business_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column google_maps_uri
+		dataType: string
+		lineageTag: 4b84c4fc-d1a6-4c5c-84b3-24dd9f99570e
+		summarizeBy: none
+		sourceColumn: google_maps_uri
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_query
+		dataType: string
+		lineageTag: 9c767fb7-7bd3-49ad-9b90-cddf697ad653
+		summarizeBy: none
+		sourceColumn: source_query
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_seen_at
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: 1d9fe25c-9a03-4fab-bfbd-350e336debf5
+		summarizeBy: none
+		sourceColumn: first_seen_at
+
+		variation Variation
+			isDefault
+			relationship: 2ae8af4d-96de-4a77-8678-9d4cd7dcd859
+			defaultHierarchy: LocalDateTable_ee1fd506-b7b8-4b2b-b754-6eda632586fc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_seen_at
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: a9726876-31c8-4bb8-abc1-8ae32171eb97
+		summarizeBy: none
+		sourceColumn: last_seen_at
+
+		variation Variation
+			isDefault
+			relationship: b4a7e00b-c81a-41b7-a264-e0a5556c647d
+			defaultHierarchy: LocalDateTable_f9cf4f59-9fea-450e-af7f-f7697d869a06.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 1eddc3db-ef1f-412f-93d9-14bc71772217
+		summarizeBy: sum
+		sourceColumn: transaction_count
+
+		annotation SummarizationSetBy = Automatic
+
+	partition v_atm_locations_powerbi = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("192.168.1.50:5432", "atm_network"),
+				    Data = Source{[Schema="public", Item="v_atm_locations_powerbi"]}[Data]
+				in
+				    Data
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

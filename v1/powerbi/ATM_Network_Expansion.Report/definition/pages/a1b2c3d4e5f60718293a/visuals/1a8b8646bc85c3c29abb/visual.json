@@ -1,0 +1,222 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "1a8b8646bc85c3c29abb",
+  "position": {
+    "x": 220.1196151512525,
+    "y": 569.47074629453061,
+    "z": 11001,
+    "height": 150.53341423246945,
+    "width": 1025.3313686400277,
+    "tabOrder": 11001
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "name"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.name",
+              "nativeQueryRef": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "province"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.province",
+              "nativeQueryRef": "province"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "v_atm_locations_powerbi"
+                        }
+                      },
+                      "Property": "transaction_count"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(v_atm_locations_powerbi.transaction_count)",
+              "nativeQueryRef": "transaction_count"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "business_status"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.business_status",
+              "nativeQueryRef": "business_status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.region",
+              "nativeQueryRef": "region"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "address"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.address",
+              "nativeQueryRef": "address"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "v_atm_locations_powerbi"
+                  }
+                },
+                "Property": "address"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9ce25b1d5b5a27092a57",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "da3a932876d358260920",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "v_atm_locations_powerbi"
+                  }
+                },
+                "Property": "transaction_count"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4f968c43db388cb731ab",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "business_status"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6b1de985c082051e0882",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "province"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b913f7dfbd7a0d72d282",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "address"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c2e8a4ff13b409a2bc47",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

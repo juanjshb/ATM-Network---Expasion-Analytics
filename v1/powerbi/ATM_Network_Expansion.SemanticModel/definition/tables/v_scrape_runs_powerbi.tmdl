@@ -1,0 +1,97 @@
+table v_scrape_runs_powerbi
+	lineageTag: 5fc500fb-a2ec-4401-be05-a9911ae50447
+
+	measure 'Latest Scrape Results' = MAX('v_scrape_runs_powerbi'[result_count])
+		formatString: #,0
+		lineageTag: 47b49e70-07a5-4396-97a2-786ff7294e3a
+
+	column id
+		dataType: int64
+		lineageTag: e022e9ea-8e1f-4d20-9b69-3ab0b4ec6731
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column query
+		dataType: string
+		lineageTag: adf7d6e9-b0d8-4713-b39c-af7cab0e08ec
+		summarizeBy: none
+		sourceColumn: query
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 852c7d6c-6649-44e6-8040-ffbc5fefa6e7
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column result_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: eb4fc6f4-7176-4a0d-b32d-bac77ce926de
+		summarizeBy: sum
+		sourceColumn: result_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column inserted_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: e37d2007-fa25-4df1-8fa0-5a514d0dbf58
+		summarizeBy: sum
+		sourceColumn: inserted_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 96562ba3-d4a4-45f4-b971-165fc2144741
+		summarizeBy: sum
+		sourceColumn: updated_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column started_at
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: 656d5806-f82c-4071-9ce7-e2949a90d950
+		summarizeBy: none
+		sourceColumn: started_at
+
+		variation Variation
+			isDefault
+			relationship: d7dfbaab-dcc4-47d1-aa54-a649a88fef46
+			defaultHierarchy: LocalDateTable_b81e736d-ad27-406b-8f6e-d5add17dcd44.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column finished_at
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: 4eea9b69-0ef3-468e-a473-f0430a047631
+		summarizeBy: none
+		sourceColumn: finished_at
+
+		variation Variation
+			isDefault
+			relationship: bbaa2d5b-8e4d-4bb9-b43d-4471a7844853
+			defaultHierarchy: LocalDateTable_a5003c52-6edf-44e3-9b4d-e84502821f4d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition v_scrape_runs_powerbi = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("192.168.1.50:5432", "atm_network"),
+				    Data = Source{[Schema="public", Item="v_scrape_runs_powerbi"]}[Data]
+				in
+				    Data
+
+	annotation PBI_ResultType = Table
+

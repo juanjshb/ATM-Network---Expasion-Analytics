@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "44444444444444444444",
+  "position": {
+    "x": 999.72489519461726,
+    "y": 85.551030151128614,
+    "z": 3000,
+    "height": 90.439660445478822,
+    "width": 268.8746661892614,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "v_atm_locations_powerbi"
+                    }
+                  },
+                  "Property": "Average Utilization"
+                }
+              },
+              "queryRef": "v_atm_locations_powerbi.Average Utilization",
+              "nativeQueryRef": "Average Utilization",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AVERAGE UTILIZATION'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "20bd05c25eba7509e092",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "v_atm_locations_powerbi"
+              }
+            },
+            "Property": "Average Utilization"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

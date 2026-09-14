@@ -1,0 +1,20 @@
+relationship 2ae8af4d-96de-4a77-8678-9d4cd7dcd859
+	joinOnDateBehavior: datePartOnly
+	fromColumn: v_atm_locations_powerbi.first_seen_at
+	toColumn: LocalDateTable_ee1fd506-b7b8-4b2b-b754-6eda632586fc.Date
+
+relationship b4a7e00b-c81a-41b7-a264-e0a5556c647d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: v_atm_locations_powerbi.last_seen_at
+	toColumn: LocalDateTable_f9cf4f59-9fea-450e-af7f-f7697d869a06.Date
+
+relationship d7dfbaab-dcc4-47d1-aa54-a649a88fef46
+	joinOnDateBehavior: datePartOnly
+	fromColumn: v_scrape_runs_powerbi.started_at
+	toColumn: LocalDateTable_b81e736d-ad27-406b-8f6e-d5add17dcd44.Date
+
+relationship bbaa2d5b-8e4d-4bb9-b43d-4471a7844853
+	joinOnDateBehavior: datePartOnly
+	fromColumn: v_scrape_runs_powerbi.finished_at
+	toColumn: LocalDateTable_a5003c52-6edf-44e3-9b4d-e84502821f4d.Date
+

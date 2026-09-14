@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATM Network Expansion Dashboard Preview</title>
+  <style>
+    :root {
+      --bg: #111217;
+      --panel: #202127;
+      --panel-2: #18191f;
+      --line: #30323a;
+      --text: #f6f7fb;
+      --muted: #9ca3af;
+      --red: #d9203a;
+      --red-2: #f05264;
+      --green: #37c978;
+      --amber: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .dashboard {
+      width: 1280px;
+      height: 720px;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle at 72% 42%, rgba(217, 32, 58, 0.12), transparent 26%),
+        linear-gradient(135deg, #121318, #0f1015);
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      background: #15161c;
+      border-right: 1px solid #2a2c34;
+      padding: 24px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--red);
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), #ff485d);
+      color: #15161c;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 26px;
+    }
+
+    .nav {
+      display: grid;
+      gap: 17px;
+      font-size: 13px;
+    }
+
+    .nav div {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      align-items: center;
+      gap: 10px;
+      color: #f1f3f8;
+    }
+
+    .nav span {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .main {
+      padding: 16px 20px 18px;
+      display: grid;
+      grid-template-rows: 58px 90px 1fr;
+      gap: 10px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr 410px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.18;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .period {
+      margin-top: 12px;
+      font-size: 12px;
+      color: white;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      align-items: end;
+    }
+
+    .filter label {
+      display: block;
+      margin-bottom: 4px;
+      color: white;
+      font-size: 11px;
+    }
+
+    .filter div {
+      height: 26px;
+      border: 1px solid #373943;
+      border-radius: 5px;
+      background: #272831;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px;
+      font-size: 12px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .card,
+    .panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--panel), #191a20);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+    }
+
+    .kpi {
+      padding: 13px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi h2,
+    .panel h2 {
+      margin: 0;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .kpi strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .kpi small {
+      color: var(--green);
+      font-size: 12px;
+    }
+
+    .spark {
+      position: absolute;
+      right: 14px;
+      bottom: 15px;
+      width: 110px;
+      height: 30px;
+      background:
+        linear-gradient(155deg, transparent 0 12%, rgba(217, 32, 58, .25) 13% 100%),
+        linear-gradient(135deg, transparent 0 12%, var(--red) 13% 16%, transparent 17% 34%, var(--red) 35% 38%, transparent 39% 48%, var(--red) 49% 52%, transparent 53%);
+      opacity: .85;
+      clip-path: polygon(0 78%, 12% 63%, 22% 70%, 34% 49%, 46% 54%, 57% 35%, 70% 41%, 82% 24%, 100% 10%, 100% 100%, 0 100%);
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 305px;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .left-grid {
+      display: grid;
+      grid-template-rows: 1fr 150px;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .right-grid {
+      display: grid;
+      grid-template-rows: 185px 1fr;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .panel {
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .map {
+      position: relative;
+      height: calc(100% - 18px);
+      margin-top: 8px;
+      border: 1px solid #2b2e36;
+      background:
+        radial-gradient(circle at 70% 58%, rgba(255, 205, 70, .85) 0 1.5%, rgba(245, 158, 11, .65) 2% 5%, rgba(217, 32, 58, .28) 6% 10%, transparent 11%),
+        radial-gradient(circle at 60% 55%, rgba(255, 205, 70, .7) 0 1.6%, rgba(217, 32, 58, .35) 2% 8%, transparent 9%),
+        radial-gradient(circle at 52% 38%, rgba(255, 205, 70, .55) 0 1.2%, rgba(217, 32, 58, .28) 2% 8%, transparent 9%),
+        radial-gradient(circle at 80% 50%, rgba(255, 205, 70, .6) 0 1.2%, rgba(217, 32, 58, .24) 2% 8%, transparent 9%),
+        linear-gradient(155deg, #252a31, #12181c 56%, #0e1217);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .island {
+      position: absolute;
+      left: 36px;
+      top: 52px;
+      width: 650px;
+      height: 255px;
+      background: #30343b;
+      opacity: .74;
+      clip-path: polygon(0 34%, 13% 20%, 27% 27%, 42% 9%, 59% 21%, 76% 15%, 94% 38%, 100% 61%, 83% 71%, 65% 66%, 48% 81%, 29% 74%, 15% 88%, 0 72%);
+    }
+
+    .gridlines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    .pin {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--red);
+      border: 2px solid #ffb1bb;
+      box-shadow: 0 0 18px rgba(217, 32, 58, .9);
+    }
+
+    .pin.green {
+      background: #2fbf71;
+      border-color: #96f2bd;
+      box-shadow: 0 0 14px rgba(55, 201, 120, .75);
+    }
+
+    .pin.gray {
+      background: #9ca3af;
+      border-color: #e5e7eb;
+      box-shadow: 0 0 12px rgba(255, 255, 255, .55);
+    }
+
+    .label {
+      position: absolute;
+      color: white;
+      font-size: 16px;
+      text-shadow: 0 2px 10px black;
+    }
+
+    .legend {
+      position: absolute;
+      right: 26px;
+      bottom: 20px;
+      width: 140px;
+      padding: 10px;
+      border-radius: 6px;
+      background: rgba(32, 33, 39, .88);
+      border: 1px solid #333640;
+      font-size: 10px;
+    }
+
+    .legend div {
+      margin-top: 6px;
+      color: white;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: -1px;
+    }
+
+    .bars {
+      height: 128px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      align-items: end;
+      padding: 10px 10px 0;
+      border-bottom: 1px solid #353741;
+    }
+
+    .bar {
+      background: linear-gradient(#e12943, #b71931);
+      min-height: 30px;
+      border-radius: 2px 2px 0 0;
+      position: relative;
+    }
+
+    .bar span {
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      color: white;
+    }
+
+    .axis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 6px 4px 0;
+      text-align: center;
+      color: white;
+      font-size: 10px;
+    }
+
+    .matrix {
+      margin-top: 8px;
+      display: grid;
+      gap: 8px;
+      font-size: 10px;
+    }
+
+    .matrix-row {
+      display: grid;
+      grid-template-columns: 65px repeat(4, 1fr);
+      gap: 8px;
+      align-items: center;
+    }
+
+    .cellbar {
+      height: 18px;
+      background: #9ca3af;
+      opacity: .85;
+    }
+
+    .cellbar.red {
+      background: var(--red);
+      opacity: 1;
+    }
+
+    .linebox {
+      position: relative;
+      height: 96px;
+      margin-top: 10px;
+      border-left: 1px solid #444751;
+      border-bottom: 1px solid #444751;
+      background: linear-gradient(rgba(217, 32, 58, .22), rgba(217, 32, 58, .05));
+      clip-path: polygon(0 65%, 12% 42%, 24% 58%, 36% 39%, 49% 22%, 62% 45%, 75% 32%, 87% 10%, 100% 28%, 100% 100%, 0 100%);
+    }
+
+    .table {
+      margin-top: 9px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 1px;
+      font-size: 11px;
+    }
+
+    .table div {
+      padding: 6px 8px;
+      background: #252730;
+      color: #eef0f5;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .table .head {
+      color: white;
+      background: #2c2e37;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main class="dashboard">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">S</div>Scotiabank</div>
+      <nav class="nav">
+        <div><span>&#8962;</span>Home</div>
+        <div><span>&#9638;</span>Executive Overview</div>
+        <div><span>&#9678;</span>Geospatial Analytics</div>
+        <div><span>&#9637;</span>Performance</div>
+        <div><span>&#8961;</span>Competitor Analysis</div>
+        <div><span>&#9881;</span>Settings</div>
+      </nav>
+    </aside>
+
+    <section class="main">
+      <header class="topbar">
+        <div>
+          <h1>ATM Network Expansion &amp; Geospatial Analytics:<br>Dominican Republic</h1>
+          <div class="period">Period: Jan 2024 - Dec 2024</div>
+        </div>
+        <div class="filters">
+          <div class="filter"><label>Region</label><div>Region <span>v</span></div></div>
+          <div class="filter"><label>Province</label><div>Province <span>v</span></div></div>
+          <div class="filter"><label>Date</label><div>2024 <span>v</span></div></div>
+          <div class="filter"><label>ATM Type</label><div>ATM Type <span>v</span></div></div>
+        </div>
+      </header>
+
+      <section class="kpis">
+        <article class="card kpi"><h2>Total ATMs</h2><strong>294</strong><small>&#9650; +5.8% YoY</small><div class="spark"></div></article>
+        <article class="card kpi"><h2>Network Coverage</h2><strong>78%</strong><small>&#9650; +3.2%</small><div class="spark"></div></article>
+        <article class="card kpi"><h2>Total Transactions</h2><strong>14.2M</strong><small>&#9650; +8.1%</small><div class="spark"></div></article>
+        <article class="card kpi"><h2>Average Utilization</h2><strong>68.5%</strong><small>&#9650; +2.4%</small><div class="spark"></div></article>
+      </section>
+
+      <section class="content">
+        <div class="left-grid">
+          <article class="panel">
+            <h2>Map of Dominican Republic</h2>
+            <div class="map">
+              <div class="island"></div>
+              <div class="gridlines"></div>
+              <div class="label" style="left: 430px; top: 112px;">Santiago</div>
+              <div class="label" style="left: 525px; top: 245px;">Santo<br>Domingo</div>
+              <i class="pin" style="left: 512px; top: 190px;"></i>
+              <i class="pin" style="left: 545px; top: 210px;"></i>
+              <i class="pin" style="left: 576px; top: 232px;"></i>
+              <i class="pin" style="left: 615px; top: 235px;"></i>
+              <i class="pin" style="left: 650px; top: 230px;"></i>
+              <i class="pin" style="left: 420px; top: 162px;"></i>
+              <i class="pin" style="left: 470px; top: 108px;"></i>
+              <i class="pin green" style="left: 492px; top: 218px;"></i>
+              <i class="pin green" style="left: 596px; top: 190px;"></i>
+              <i class="pin gray" style="left: 335px; top: 80px;"></i>
+              <i class="pin gray" style="left: 548px; top: 75px;"></i>
+              <i class="pin gray" style="left: 690px; top: 170px;"></i>
+              <div class="legend">
+                <strong>Legend</strong>
+                <div><span class="dot" style="background: var(--red);"></span>Scotiabank ATMs</div>
+                <div><span class="dot" style="background: #9ca3af;"></span>Competitor ATMs</div>
+                <div><span class="dot" style="background: var(--amber);"></span>Coverage Heatmap</div>
+              </div>
+            </div>
+          </article>
+
+          <div class="bottom-grid">
+            <article class="panel">
+              <h2>Transaction Volume Trend</h2>
+              <div class="linebox"></div>
+            </article>
+            <article class="panel">
+              <h2>ATM Location Detail</h2>
+              <div class="table">
+                <div class="head">Name</div><div class="head">Province</div><div class="head">Region</div><div class="head">Status</div>
+                <div>Scotiabank ATM Piantini</div><div>Distrito Nacional</div><div>Ozama</div><div>Operational</div>
+                <div>Scotiabank ATM Santiago</div><div>Santiago</div><div>Cibao Norte</div><div>Operational</div>
+                <div>Scotiabank ATM Punta Cana</div><div>La Altagracia</div><div>Yuma</div><div>Operational</div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="right-grid">
+          <article class="panel">
+            <h2>ATM Density by Region</h2>
+            <div class="bars">
+              <div class="bar" style="height: 118px;"><span>84</span></div>
+              <div class="bar" style="height: 90px;"><span>61</span></div>
+              <div class="bar" style="height: 70px;"><span>47</span></div>
+              <div class="bar" style="height: 45px;"><span>29</span></div>
+            </div>
+            <div class="axis"><div>Distrito<br>Nacional</div><div>Santo<br>Domingo</div><div>Santiago</div><div>La<br>Altagracia</div></div>
+          </article>
+
+          <article class="panel">
+            <h2>Competitor Comparison Matrix</h2>
+            <div class="matrix">
+              <div class="matrix-row"><strong>Metric</strong><strong>Scotia</strong><strong>Banres.</strong><strong>Popular</strong><strong>BHD</strong></div>
+              <div class="matrix-row"><span>ATMs</span><div class="cellbar red"></div><div class="cellbar"></div><div class="cellbar" style="background:#ef6a5b;"></div><div class="cellbar"></div></div>
+              <div class="matrix-row"><span>Coverage</span><div class="cellbar red" style="width:80%;"></div><div class="cellbar"></div><div class="cellbar" style="width:55%;background:#ef6a5b;"></div><div class="cellbar" style="width:48%;"></div></div>
+              <div class="matrix-row"><span>Trans. Vol</span><div class="cellbar red" style="width:48%;"></div><div class="cellbar" style="width:70%;"></div><div class="cellbar" style="width:25%;background:#ef6a5b;"></div><div class="cellbar" style="width:20%;"></div></div>
+              <div class="matrix-row"><span>Market</span><div class="cellbar red" style="width:55%;"></div><div class="cellbar" style="width:60%;"></div><div class="cellbar" style="width:32%;background:#ef6a5b;"></div><div class="cellbar" style="width:22%;"></div></div>
+              <div class="matrix-row"><span>Avg. Util.</span><div class="cellbar red" style="width:75%;"></div><div class="cellbar" style="width:65%;"></div><div class="cellbar" style="width:50%;background:#ef6a5b;"></div><div class="cellbar" style="width:44%;"></div></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "name": "Scotia Dark ATM Analytics",
+  "dataColors": [
+    "#D9203A",
+    "#F05264",
+    "#9CA3AF",
+    "#37C978",
+    "#F59E0B",
+    "#5AA7FF",
+    "#F87171",
+    "#E5E7EB"
+  ],
+  "background": "#111217",
+  "foreground": "#F6F7FB",
+  "tableAccent": "#D9203A",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#202127"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#30323A"
+              }
+            },
+            "radius": 6
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#F6F7FB"
+              }
+            },
+            "fontSize": 11
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ]
+      }
+    }
+  }
+}
