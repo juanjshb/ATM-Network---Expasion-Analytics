@@ -7,3 +7,5 @@ This repository now has two versions:
 
 Start with `v1` when the goal is to collect data and build a Power BI report. Use `v2` when the goal is a custom web dashboard.
 
+
+![Alt text](images/scotia-5b892d8e-ae1a-4e45-b759-6fb62e81da1f.jpg)   
